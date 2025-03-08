@@ -167,3 +167,5 @@ dataset
 workdir
 scripts
 trainer_output
+models
+tmp_trainer
