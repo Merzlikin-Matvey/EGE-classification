@@ -10,7 +10,6 @@ import datetime
 class TaskClassifier:
     def __init__(self, model_name='DmitryPogrebnoy/distilbert-base-russian-cased', num_labels=19):
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        print(f"Using {self.device}")
         self.model = transformers.AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=num_labels)
         self.model.to(self.device)
         self.tokenizer = transformers.AutoTokenizer.from_pretrained(model_name)
