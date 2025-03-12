@@ -29,7 +29,7 @@ class HuggingFace:
                 folder_path=model_path,
                 repo_id=self.repo_name,
                 commit_message=commit_message,
-                ignore_patterns=["**/.git*"]
+                ignore_patterns=["**/.git*", "**/logs*", "**/*.tmp"],
             )
             print("Модель успешно отправлена в Hugging Face!")
         except Exception as e:

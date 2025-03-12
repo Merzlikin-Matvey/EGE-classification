@@ -8,14 +8,16 @@ import datetime
 
 
 class TaskClassifier:
-    def __init__(self, model_name='DmitryPogrebnoy/distilbert-base-russian-cased', num_labels=19):
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        self.model = transformers.AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=num_labels)
-        self.model.to(self.device)
-        self.tokenizer = transformers.AutoTokenizer.from_pretrained(model_name)
+    def __init__(self, model_name='MatveyMerzlikin/ege-classification', num_labels=19):
+        self.model = transformers.AutoModelForSequenceClassification.from_pretrained(
+            model_name, num_labels=num_labels, local_files_only=False, use_auth_token=True
+        )
+        self.tokenizer = transformers.AutoTokenizer.from_pretrained(
+            model_name, local_files_only=False, use_auth_token=True
+        )
 
     def predict(self, text):
-        inputs = self.tokenizer(text, return_tensors='pt').to(self.device)
+        inputs = self.tokenizer(text, return_tensors='pt')
         outputs = self.model(**inputs)
         logits = outputs.logits
         predicted_class = torch.argmax(logits, dim=1).item()
@@ -76,7 +78,6 @@ class TaskClassifier:
 
     def load(self, path):
         self.model = transformers.AutoModelForSequenceClassification.from_pretrained(path)
-        self.model.to(self.device)
         self.tokenizer = transformers.AutoTokenizer.from_pretrained(path)
         return self
 

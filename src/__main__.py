@@ -1,3 +1,7 @@
 from src.huggingface import HuggingFace
+from src.model import TaskClassifier
 
-HuggingFace().save()
+model = TaskClassifier()
+
+while True:
+    print(model.predict(input("Введите текст: ")))
