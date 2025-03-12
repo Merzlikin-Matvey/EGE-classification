@@ -10,10 +10,10 @@ import datetime
 class TaskClassifier:
     def __init__(self, model_name='MatveyMerzlikin/ege-classification', num_labels=19):
         self.model = transformers.AutoModelForSequenceClassification.from_pretrained(
-            model_name, num_labels=num_labels, local_files_only=False, use_auth_token=True
+            model_name, num_labels=num_labels, local_files_only=False
         )
         self.tokenizer = transformers.AutoTokenizer.from_pretrained(
-            model_name, local_files_only=False, use_auth_token=True
+            model_name, local_files_only=False
         )
 
     def predict(self, text):
