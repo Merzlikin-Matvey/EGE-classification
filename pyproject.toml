@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ege_classification"
-version = "0.0.1"
+version = "0.0.2"
 description = ""
 authors = ["Merzlikin-Matvey <merzlikinmatvey01@gmail.com>"]
 license = "MIT"
