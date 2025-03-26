@@ -40,7 +40,7 @@ jobs:
     - name: Check if version exists on PyPI
       id: check_version
       run: |
-        if curl -s https://pypi.org/pypi/manimextra/json | jq -e ".releases | has(\"${{ env.VERSION }}\")"; then
+        if curl -s https://pypi.org/pypi/ege_classification/json | jq -e ".releases | has(\"${{ env.VERSION }}\")"; then
           echo "VERSION_EXISTS=true" >> $GITHUB_ENV
         else
           echo "VERSION_EXISTS=false" >> $GITHUB_ENV
